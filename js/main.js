@@ -1,10 +1,6 @@
 let phyChaptersDiv = document.querySelector('#phyChapters');
 
-if (localStorage.getItem('Rectilinear Motion') == null) {
-    phyChaptersArray.forEach(function (element) {
-        setDetailsTotally(element)
-    })
-}
+
 
 function getDetails(chapterName) {
     let details = {
@@ -92,7 +88,11 @@ let phyChaptersArray = [
     "ERROR and Measuring Instruments"
 ]
 
-
+if (localStorage.getItem('Rectilinear Motion') == null) {
+    phyChaptersArray.forEach(function (element) {
+        setDetailsTotally(element)
+    })
+}
 
 
 phyChaptersArray.forEach(function (chapterName, index) {
