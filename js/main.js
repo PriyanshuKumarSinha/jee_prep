@@ -2,6 +2,8 @@ let phyChaptersDiv = document.querySelector('#phyChapters');
 let chemChaptersDiv = document.querySelector('#chemChapters');
 let mathsChaptersDiv = document.querySelector('#mathsChapters');
 let organicChemChaptersDiv = document.querySelector('#organicChemChapters');
+let todaysWork = [];
+let date = new Date();
 
 
 
@@ -370,9 +372,24 @@ function changeValue(id) {
     let chapterName = id.split(",")[0];
     let valueToBeChanged = id.split(",")[1];
     details[valueToBeChanged] = document.getElementById(id).checked;
+
+    if (todaysWork.includes([chapterName, valueToBeChanged, document.getElementById(id).checked])) {
+        //do nothing
+    }
+    else if (todaysWork.includes([chapterName, valueToBeChanged, !(document.getElementById(id).checked)])) {
+        console.log("added to today's work")
+
+        todaysWork.splice(todaysWork.indexOf([chapterName, valueToBeChanged, !(document.getElementById(id).checked)]), 1);
+        todaysWork.push([chapterName, valueToBeChanged, !(document.getElementById(id).checked)]);
+    }
+    else {
+        todaysWork.push([chapterName, valueToBeChanged, (document.getElementById(id).checked)]);
+    }
+    localStorage.setItem(`${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`, JSON.stringify(todaysWork))
     setDetails(chapterName);
 }
 
 function checkValue(id) {
     return JSON.parse(localStorage.getItem(id.split(',')[0]))[id.split(',')[id.split(',').length - 1]] ? "checked" : ""
 }
+localStorage.clear();
