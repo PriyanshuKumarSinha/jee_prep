@@ -1,4 +1,6 @@
 let phyChaptersDiv = document.querySelector('#phyChapters');
+let chemChaptersDiv = document.querySelector('#chemChapters');
+let mathsChaptersDiv = document.querySelector('#mathsChapters');
 
 
 
@@ -53,7 +55,37 @@ let details = {
 function setDetails(chapterName) {
     localStorage.setItem(chapterName, JSON.stringify(details))
 }
+let mathsChaptersArray = [
+    "Sets",
+    "Fundamentals of Maths",
+    "Quadratic Equation",
+    "Relations",
+    "Functions",
+    "Inverse Trigonometric Functions",
+    "Statistics",
+    "Sequence and Series",
+    "Matrices and Determinants",
+    "Straight Lines",
+    "Circle",
+    "Limits Continuity and Differentiability",
+    "MOD",
+    "AOD",
+    "Reasoning",
+    "Conic Section",
+    "Indefinite Integration",
+    "Definite Integration and its application",
+    "Differential Equations",
+    "Vectors and 3D",
+    "Complex Numbers",
+    "Solution of Triangle",
+    "Binomial",
+    "Permutation and Combination",
+    "Probability"
+]
+let chemChaptersArray = [
+    "Mole Concept",
 
+]
 let phyChaptersArray = [
     'Rectilinear Motion',
     "Projectile Motion",
@@ -85,11 +117,11 @@ let phyChaptersArray = [
     "Properties of Matter",
     "Semi - Conductor",
     "Communication System",
-    "ERROR and Measuring Instruments"
+    "ERROR and Measuring Instruments",
 ]
 
 if (localStorage.getItem('Rectilinear Motion') == null) {
-    phyChaptersArray.forEach(function (element) {
+    (phyChaptersArray.concat(mathsChaptersArray)).concat(chemChaptersArray).forEach(function (element) {
         setDetailsTotally(element)
     })
 }
@@ -97,6 +129,104 @@ if (localStorage.getItem('Rectilinear Motion') == null) {
 
 phyChaptersArray.forEach(function (chapterName, index) {
     phyChaptersDiv.innerHTML += `
+                        <div class="list-group-item list-group-item-action " aria-current="true" id="${chapterName}">
+                            <div class="d-flex w-100 justify-content-between ">
+                                <h5 class="mb-1">Chapter ${index + 1} :<br><br> ${chapterName}</h5>
+                            </div><br>
+                                <ul class="list-group">
+                                    <li class="list-group-item">
+                                        <input id = "${chapterName},videoLectures" onclick = 'changeValue(this.id)' class="form-check-input me-1" type="checkbox" value="" aria-label="..."
+                                        ${checkValue(chapterName + ",videoLectures")} >
+                                        <a href = "">Video Lectues</a>
+
+                                    </li>
+                                    <li class="list-group-item">
+                                        <input id = "${chapterName},notesMade" onclick = 'changeValue(this.id)' class="form-check-input me-1" type="checkbox" value="" aria-label="..."${checkValue(chapterName + ",notesMade")}>
+                                        Notes
+                                    </li>
+                                    <li class="list-group-item">
+                                        <input id = "${chapterName},rev1" class="form-check-input me-1" onclick = 'changeValue(this.id)' type="checkbox" value="" aria-label="..."${checkValue(chapterName + ",rev1")}>
+                                        Complete Revision 1
+                                    </li>
+                                    <li class="list-group-item">
+                                        <input id = "${chapterName},rev2" class="form-check-input me-1" onclick = 'changeValue(this.id)' type="checkbox" value="" aria-label="..."${checkValue(chapterName + ",rev2")}>
+                                        Complete Revision 2
+                                    </li>
+                                    <li class="list-group-item">
+                                        <input id = "${chapterName},rev3" class="form-check-input me-1" onclick = 'changeValue(this.id)' type="checkbox" value="" aria-label="..."${checkValue(chapterName + ",rev3")}>
+                                        Complete Revision 3
+                                    </li>
+                                    <li class="list-group-item">
+                                        <input id = "${chapterName},pyqs" class="form-check-input me-1" onclick = 'changeValue(this.id)' type="checkbox" value="" aria-label="..."${checkValue(chapterName + ",pyqs")}>
+                                        JEE MAIN PYQs
+                                    </li>
+                                    <li class="list-group-item">
+                                        <input id = "${chapterName},e1" class="form-check-input me-1" onclick = 'changeValue(this.id)' type="checkbox" value="" aria-label="..."${checkValue(chapterName + ",e1")}>
+                                        Exercise 1
+                                    </li>
+                                    <li class="list-group-item">
+                                        <input id = "${chapterName},e2" class="form-check-input me-1" onclick = 'changeValue(this.id)' type="checkbox" value="" aria-label="..."${checkValue(chapterName + ",e2")}>
+                                        Exercise 2
+                                    </li>
+                                    <li class="list-group-item">
+                                        <input id = "${chapterName},e3" class="form-check-input me-1" onclick = 'changeValue(this.id)' type="checkbox" value="" aria-label="..."${checkValue(chapterName + ",e3")}>
+                                        Exercise 3
+                                    </li>
+
+                                </ul>
+                       <br> </div><br>`;
+})
+mathsChaptersArray.forEach(function (chapterName, index) {
+    mathsChaptersDiv.innerHTML += `
+                        <div class="list-group-item list-group-item-action " aria-current="true" id="${chapterName}">
+                            <div class="d-flex w-100 justify-content-between ">
+                                <h5 class="mb-1">Chapter ${index + 1} :<br><br> ${chapterName}</h5>
+                            </div><br>
+                                <ul class="list-group">
+                                    <li class="list-group-item">
+                                        <input id = "${chapterName},videoLectures" onclick = 'changeValue(this.id)' class="form-check-input me-1" type="checkbox" value="" aria-label="..."
+                                        ${checkValue(chapterName + ",videoLectures")} >
+                                        <a href = "">Video Lectues</a>
+
+                                    </li>
+                                    <li class="list-group-item">
+                                        <input id = "${chapterName},notesMade" onclick = 'changeValue(this.id)' class="form-check-input me-1" type="checkbox" value="" aria-label="..."${checkValue(chapterName + ",notesMade")}>
+                                        Notes
+                                    </li>
+                                    <li class="list-group-item">
+                                        <input id = "${chapterName},rev1" class="form-check-input me-1" onclick = 'changeValue(this.id)' type="checkbox" value="" aria-label="..."${checkValue(chapterName + ",rev1")}>
+                                        Complete Revision 1
+                                    </li>
+                                    <li class="list-group-item">
+                                        <input id = "${chapterName},rev2" class="form-check-input me-1" onclick = 'changeValue(this.id)' type="checkbox" value="" aria-label="..."${checkValue(chapterName + ",rev2")}>
+                                        Complete Revision 2
+                                    </li>
+                                    <li class="list-group-item">
+                                        <input id = "${chapterName},rev3" class="form-check-input me-1" onclick = 'changeValue(this.id)' type="checkbox" value="" aria-label="..."${checkValue(chapterName + ",rev3")}>
+                                        Complete Revision 3
+                                    </li>
+                                    <li class="list-group-item">
+                                        <input id = "${chapterName},pyqs" class="form-check-input me-1" onclick = 'changeValue(this.id)' type="checkbox" value="" aria-label="..."${checkValue(chapterName + ",pyqs")}>
+                                        JEE MAIN PYQs
+                                    </li>
+                                    <li class="list-group-item">
+                                        <input id = "${chapterName},e1" class="form-check-input me-1" onclick = 'changeValue(this.id)' type="checkbox" value="" aria-label="..."${checkValue(chapterName + ",e1")}>
+                                        Exercise 1
+                                    </li>
+                                    <li class="list-group-item">
+                                        <input id = "${chapterName},e2" class="form-check-input me-1" onclick = 'changeValue(this.id)' type="checkbox" value="" aria-label="..."${checkValue(chapterName + ",e2")}>
+                                        Exercise 2
+                                    </li>
+                                    <li class="list-group-item">
+                                        <input id = "${chapterName},e3" class="form-check-input me-1" onclick = 'changeValue(this.id)' type="checkbox" value="" aria-label="..."${checkValue(chapterName + ",e3")}>
+                                        Exercise 3
+                                    </li>
+
+                                </ul>
+                       <br> </div><br>`;
+})
+chemChaptersArray.forEach(function (chapterName, index) {
+    chemChaptersDiv.innerHTML += `
                         <div class="list-group-item list-group-item-action " aria-current="true" id="${chapterName}">
                             <div class="d-flex w-100 justify-content-between ">
                                 <h5 class="mb-1">Chapter ${index + 1} :<br><br> ${chapterName}</h5>
