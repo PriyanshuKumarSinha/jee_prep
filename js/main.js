@@ -1,6 +1,7 @@
 let phyChaptersDiv = document.querySelector('#phyChapters');
 let chemChaptersDiv = document.querySelector('#chemChapters');
 let mathsChaptersDiv = document.querySelector('#mathsChapters');
+let organicChemChaptersDiv = document.querySelector('#organicChemChapters');
 
 
 
@@ -84,7 +85,45 @@ let mathsChaptersArray = [
 ]
 let chemChaptersArray = [
     "Mole Concept",
-
+    "Atomic Structures",
+    "Periodic Table",
+    "Gaseous State",
+    "Chemical Bonding",
+    "Chemical Equilibrium",
+    "Ionic Equilibrium",
+    "Coordination Compounds",
+    "ElectroChemistry",
+    "Metallurgy",
+    "Qualitative Analysis",
+    "P block",
+    "Chemical Kinetics",
+    "Liquid Solution",
+    "Surface Chemistry",
+    "s block elements",
+    "Solid State",
+    "Thermodynamics",
+    "Thermochemistry",
+    "Equivalent Concept",
+    "d and f block elements",
+]
+let organicChemChaptersArray = [
+    "IUPAC",
+    "Structural Isomerism",
+    "Structural Identification and POC",
+    "General Organic Chemistry",
+    "Stereo isomerism",
+    "ORM1",
+    "ORM2",
+    "ORM3",
+    "ORM4",
+    "Reduction Oxidation and hydrolysis",
+    "Aromatic COmpounds",
+    "Amines",
+    "Aldehydes and Ketones",
+    "Carboxylic Acid and Derivatives",
+    "Biomolecules",
+    "Plymers",
+    "Chemistry in Everyday life"
 ]
 let phyChaptersArray = [
     'Rectilinear Motion',
@@ -121,7 +160,7 @@ let phyChaptersArray = [
 ]
 
 if (localStorage.getItem('Rectilinear Motion') == null) {
-    (phyChaptersArray.concat(mathsChaptersArray)).concat(chemChaptersArray).forEach(function (element) {
+    ((phyChaptersArray.concat(mathsChaptersArray)).concat(chemChaptersArray)).concat(organicChemChaptersArray).forEach(function (element) {
         setDetailsTotally(element)
     })
 }
@@ -227,6 +266,55 @@ mathsChaptersArray.forEach(function (chapterName, index) {
 })
 chemChaptersArray.forEach(function (chapterName, index) {
     chemChaptersDiv.innerHTML += `
+                        <div class="list-group-item list-group-item-action " aria-current="true" id="${chapterName}">
+                            <div class="d-flex w-100 justify-content-between ">
+                                <h5 class="mb-1">Chapter ${index + 1} :<br><br> ${chapterName}</h5>
+                            </div><br>
+                                <ul class="list-group">
+                                    <li class="list-group-item">
+                                        <input id = "${chapterName},videoLectures" onclick = 'changeValue(this.id)' class="form-check-input me-1" type="checkbox" value="" aria-label="..."
+                                        ${checkValue(chapterName + ",videoLectures")} >
+                                        <a href = "">Video Lectues</a>
+
+                                    </li>
+                                    <li class="list-group-item">
+                                        <input id = "${chapterName},notesMade" onclick = 'changeValue(this.id)' class="form-check-input me-1" type="checkbox" value="" aria-label="..."${checkValue(chapterName + ",notesMade")}>
+                                        Notes
+                                    </li>
+                                    <li class="list-group-item">
+                                        <input id = "${chapterName},rev1" class="form-check-input me-1" onclick = 'changeValue(this.id)' type="checkbox" value="" aria-label="..."${checkValue(chapterName + ",rev1")}>
+                                        Complete Revision 1
+                                    </li>
+                                    <li class="list-group-item">
+                                        <input id = "${chapterName},rev2" class="form-check-input me-1" onclick = 'changeValue(this.id)' type="checkbox" value="" aria-label="..."${checkValue(chapterName + ",rev2")}>
+                                        Complete Revision 2
+                                    </li>
+                                    <li class="list-group-item">
+                                        <input id = "${chapterName},rev3" class="form-check-input me-1" onclick = 'changeValue(this.id)' type="checkbox" value="" aria-label="..."${checkValue(chapterName + ",rev3")}>
+                                        Complete Revision 3
+                                    </li>
+                                    <li class="list-group-item">
+                                        <input id = "${chapterName},pyqs" class="form-check-input me-1" onclick = 'changeValue(this.id)' type="checkbox" value="" aria-label="..."${checkValue(chapterName + ",pyqs")}>
+                                        JEE MAIN PYQs
+                                    </li>
+                                    <li class="list-group-item">
+                                        <input id = "${chapterName},e1" class="form-check-input me-1" onclick = 'changeValue(this.id)' type="checkbox" value="" aria-label="..."${checkValue(chapterName + ",e1")}>
+                                        Exercise 1
+                                    </li>
+                                    <li class="list-group-item">
+                                        <input id = "${chapterName},e2" class="form-check-input me-1" onclick = 'changeValue(this.id)' type="checkbox" value="" aria-label="..."${checkValue(chapterName + ",e2")}>
+                                        Exercise 2
+                                    </li>
+                                    <li class="list-group-item">
+                                        <input id = "${chapterName},e3" class="form-check-input me-1" onclick = 'changeValue(this.id)' type="checkbox" value="" aria-label="..."${checkValue(chapterName + ",e3")}>
+                                        Exercise 3
+                                    </li>
+
+                                </ul>
+                       <br> </div><br>`;
+})
+organicChemChaptersArray.forEach(function (chapterName, index) {
+    organicChemChaptersDiv.innerHTML += `
                         <div class="list-group-item list-group-item-action " aria-current="true" id="${chapterName}">
                             <div class="d-flex w-100 justify-content-between ">
                                 <h5 class="mb-1">Chapter ${index + 1} :<br><br> ${chapterName}</h5>
