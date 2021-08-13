@@ -392,4 +392,3 @@ function changeValue(id) {
 function checkValue(id) {
     return JSON.parse(localStorage.getItem(id.split(',')[0]))[id.split(',')[id.split(',').length - 1]] ? "checked" : ""
 }
-localStorage.clear();
