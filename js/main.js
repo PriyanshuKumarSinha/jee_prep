@@ -159,7 +159,10 @@ let phyChaptersArray = [
     "ERROR and Measuring Instruments",
 ]
 
-if (localStorage.getItem('Rectilinear Motion') == null) {
+if (localStorage.getItem(phyChaptersArray[0]) == null ||
+    localStorage.getItem(chemChaptersArray[0]) == null ||
+    localStorage.getItem(organicChemChaptersArray[0]) == null ||
+    localStorage.getItem(mathsChaptersArray[0]) == null) {
     ((phyChaptersArray.concat(mathsChaptersArray)).concat(chemChaptersArray)).concat(organicChemChaptersArray).forEach(function (element) {
         setDetailsTotally(element)
     })
