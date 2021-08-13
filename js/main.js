@@ -1,13 +1,4 @@
 let phyChaptersDiv = document.querySelector('#phyChapters');
-let videoLecturesArray;
-let notesMadeArray;
-let rev1Array;
-let rev2Array;
-let rev3Array;
-let pyqsArray;
-let e1Array;
-let e2Array;
-let e3Array;
 
 function getDetails(chapterName) {
     let details = {
